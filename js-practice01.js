@@ -143,4 +143,3 @@ function paperwork(n, m) {
     }
     return m * n;
   }
-  
