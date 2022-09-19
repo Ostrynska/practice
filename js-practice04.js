@@ -2,7 +2,7 @@
 // Simple, given a string of words, return the length of the shortest word(s).
 
 function findShort(s) {
-  var longestWord = s.split(' ').sort(function (a, b) {
+  const longestWord = s.split(' ').sort(function (a, b) {
     return a.length - b.length;
   });
   return longestWord[0].length;
@@ -26,8 +26,365 @@ function findShort(s) {
 
 function litres(time) {
   let wPerHour = ((time * 60) / 60) * 0.5;
-  // console.log(time * 60);
-  return Math.round(wPerHour);
+  return Math.floor(wPerHour);
 }
-console.log(litres(1.4)); // , 0, 'should return 0 litres');
-console.log(litres(12.3)); // , 6, 'should return 6 litres');
+
+// console.log(litres(1.4)); // , 0, 'should return 0 litres');
+// console.log(litres(12.3)); // , 6, 'should return 6 litres');
+
+// 03 List Filtering
+// In this kata you will create a function that takes a list of non-negative integers
+// and strings and returns a new list with the strings filtered out.
+// filter_list([1, 2, 'a', 'b']) == [1, 2];
+// filter_list([1, 'a', 'b', 0, 15]) == [1, 0, 15];
+// filter_list([1, 2, 'aasf', '1', '123', 123]) == [1, 2, 123];
+
+function filter_list(l) {
+  const numbers = [];
+  for (const item of l) {
+    if (typeof item === 'number' && !isNaN(item)) {
+      numbers.push(item);
+    }
+  }
+  return numbers;
+}
+
+// console.log(filter_list([1, 2, 'aasf', '1', '123', 123]));
+
+// 04 Highest and Lowest
+// In this little assignment you are given a string of space
+// separated numbers, and have to return the highest and lowest number.
+
+// Examples
+// highAndLow("1 2 3 4 5");  // return "5 1"
+
+function highAndLow(numbers) {
+  numbers = numbers.split(' ').map(Number);
+  // console.log(numbers);
+  const max = Math.max(...numbers);
+  const min = Math.min(...numbers);
+  return `${max} ${min}`;
+}
+// console.log(highAndLow('8 3 -5 42 -1 0 0 -9 4 7 4 -4'));
+
+// 05 Beginner Series #2 Clock
+// Clock shows h hours, m minutes and s seconds after midnight.
+
+// Your task is to write a function which returns the time since
+// midnight in milliseconds.
+// Example:
+// h = 0
+// m = 1
+// s = 1
+// result = 61000
+// Input constraints:
+// 0 <= h <= 23
+// 0 <= m <= 59
+// 0 <= s <= 59
+function past(h, m, s) {
+  return (h * 3600 + m * 60 + s) * 1000;
+}
+
+// console.log(past(0, 1, 1));
+
+// 06 Volume of a Cuboid
+// Bob needs a fast way to calculate the volume of a cuboid with three values: the length, width and height of the cuboid. Write a function to help Bob with this calculation.
+
+class Kata {
+  static getVolumeOfCuboid(length, width, height) {
+    return length * width * height;
+  }
+}
+// console.log(Kata.getVolumeOfCuboid(1, 2, 2));
+
+// 07 Vowel Count
+// Return the number (count) of vowels in the given string.
+
+// We will consider a, e, i, o, u as vowels for this Kata (but not y).
+
+// The input string will only consist of lower case letters and/or spaces.
+function getCount(str) {
+  const vowelsCount = 0;
+  for (index in str) {
+    switch (str[index]) {
+      case 'a':
+      case 'e':
+      case 'i':
+      case 'o':
+      case 'u':
+        vowelsCount++;
+        break;
+    }
+  }
+  return vowelsCount;
+}
+// console.log(getCount('abracadabra'));
+
+// 08 How good are you really?
+// 1. Написати ф-цію яка повертає чи ти здав тест в порівнянні з оцінками твого класу
+// 2. Порахувати середню оцінку зданих робіт
+// додати
+// поділити на кількість
+// порівняти з твоїми балами
+// тру - якщо в тебе більше
+// фолс - якщо в тебе менше
+function betterThanAverage(classPoints, yourPoints) {
+  let total = 0;
+  let totalClass = classPoints.length;
+
+  for (const point of classPoints) {
+    total += point / totalClass;
+  }
+
+  if (total > yourPoints) {
+    return false;
+  }
+  return true;
+}
+
+// console.log(betterThanAverage([100, 40, 34, 57, 29, 72, 57, 88], 75));
+function sumMix(x) {
+  let total = 0;
+  for (const item of x) {
+    if (typeof item === 'string' || typeof item === 'number') {
+      total += Number(item);
+    }
+  }
+  console.log(total);
+  return total;
+}
+
+// console.log(sumMix([9, 3, '7', '3']));
+
+function reverseSeq(n) {
+  let newArr = [];
+
+  for (let i = n; i > 0; i -= 1) {
+    newArr.push(i);
+  }
+  return newArr;
+}
+// console.log(reverseSeq(5));
+
+function opposite(number) {
+  if (number != 0) {
+    number = number * -1;
+  }
+  return number;
+}
+
+// console.log(opposite(-12525220.3325));
+// console.log(opposite(0));
+// console.log(opposite(1));
+// console.log(opposite(4.25));
+// console.log(opposite(3.3333333));
+function stray(numbers) {
+  let uniqueNum = numbers[0];
+
+  for (const number of numbers) {
+    if (uniqueNum !== number) {
+      uniqueNum = number;
+      return uniqueNum;
+    }
+  }
+  return 0;
+}
+
+// console.log(stray([1, 1, 8]));
+// console.log(stray([1, 7, 1]));
+// console.log(stray([17, 17, 3, 17, 17, 17, 17]));
+function updateLight(current) {
+  switch (current) {
+    case 'green':
+      return 'yellow';
+      break;
+    case 'yellow':
+      return 'red';
+      break;
+
+    case 'red':
+      return 'green';
+      break;
+  }
+}
+// console.log(updateLight('green'));
+// console.log(updateLight('yellow'));
+// console.log(updateLight('red'));
+const countSheep = function (num) {
+  let sheepCounting = ``;
+
+  for (let i = 1; i <= num; i += 1) {
+    let sheep = i;
+    sheepCounting += `${sheep}` + ' sheep...';
+  }
+  return sheepCounting;
+};
+
+// console.log(countSheep(3));
+
+function findNeedle(haystack) {
+  if (haystack.includes('needle')) {
+    let haystackPossition = haystack.indexOf('needle');
+    return `found the needle at position ${haystackPossition}`;
+  }
+  return "Your function didn't return anything";
+}
+
+const haystack_1 = [
+  '3',
+  '123124234',
+  undefined,
+  'needle',
+  'world',
+  'hay',
+  2,
+  '3',
+  true,
+  false,
+];
+const haystack_2 = [
+  '283497238987234',
+  'a dog',
+  'a cat',
+  'some random junk',
+  'a piece of hay',
+  'needle',
+  'something somebody lost a while ago',
+];
+const haystack_3 = [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  8,
+  7,
+  5,
+  4,
+  3,
+  4,
+  5,
+  6,
+  67,
+  5,
+  5,
+  3,
+  3,
+  4,
+  2,
+  34,
+  234,
+  23,
+  4,
+  234,
+  324,
+  324,
+  'needle',
+  1,
+  2,
+  3,
+  4,
+  5,
+  5,
+  6,
+  5,
+  4,
+  32,
+  3,
+  45,
+  54,
+];
+
+// console.log(findNeedle(haystack_1));
+// // undefined, "Your function didn't return anything";
+// console.log(findNeedle(haystack_1));
+// // 'found the needle at position 3';
+// console.log(findNeedle(haystack_2));
+// // 'found the needle at position 5';
+// console.log(findNeedle(haystack_3));
+// // 'found the needle at position 30;
+function min(list) {
+  return Math.min(...list);
+}
+
+const max = function (list) {
+  return Math.max(...list);
+};
+
+// console.log(min([-52, 56, 30, 29, -54, 0, -110]));
+// // , -110);
+// console.log(min([42, 54, 65, 87, 0]));
+// // , 0);
+// console.log(max([4, 6, 2, 1, 9, 63, -134, 566]));
+// // , 566);
+// console.log(max([5]));
+// // , 5);
+
+function correct(string) {
+  let stringNew = string;
+  if (string.includes(('5' && '0' && '1') || ('1' && '0'))) {
+    stringNew = string
+      .replaceAll('5', 'S')
+      .replaceAll('0', 'O')
+      .replaceAll('1', 'I');
+  }
+  return stringNew;
+}
+
+// console.log(correct('L0ND0N'));
+// // , 'LONDON');
+// console.log(correct('DUBL1N'));
+// // , 'DUBLIN');
+// console.log(correct('51NGAP0RE'));
+// // , 'SINGAPORE');
+// console.log(correct('BUDAPE5T'));
+// // , 'BUDAPEST');
+// console.log(correct('PAR15'));
+// // , 'PARIS');
+
+let total = 0;
+for (let index = 1; index < 11; index += 1) {
+  if (index % 3 === 0) {
+    total = total + index;
+  }
+}
+//
+// console.log(total);
+// elem.parentNode - вибере батьківський elem.
+// elem.childNodes - псевдомасив, зберігає всі дочірні елементи, включно з текстовими.
+// elem.children - псевдомасив, зберігає тільки дочірні вузли-елементи, тобто ті, що відповідають тегам.
+// elem.firstChild - вибере перший дочірній елемент всередині elem, включно з текстовими вузлами.
+// elem.firstElementChild - вибере перший дочірній вузол-елемент всередині elem.
+// elem.lastChild - вибере останній дочірній елемент всередині elem, включно з текстовими вузлами.
+// elem.lastElementChild - вибере останній дочірній вузол-елемент всередині elem.
+// elem.previousSibling - вибере елемент «зліва» від elem (його попереднього сусіда).
+// elem.previousElementSibling - вибере вузол-елемент «зліва» від elem (його попереднього сусіда).
+// elem.nextSibling - вибере елемент «праворуч» від elem (його наступного сусіда)
+// elem.nextElementSibling - вибере вузол-елемент «праворуч» від elem (його наступного сусіда).
+//===================================================
+// const message = document.querySelector('#message');
+// console.log(message.value); // Default textarea message
+
+// //===================================================
+// const activeLink = document.querySelector('.btn.active');
+// console.log(activeLink.href); // https://s.codepen.io/about
+
+// //===================================================
+// const image = document.querySelector('.image');
+// console.log(image.src); // https://placeimg.com/640/480/animals
+// image.src = 'https://placeimg.com/640/480/tech';
+
+// const article = document.querySelector('.article');
+// console.log(article.innerHTML);
+
+// const title = document.querySelector('.article .title');
+// console.log(title.innerHTML);
+
+const text = document.querySelector('.article .text');
+console.log(text.innerHTML);
+
+// const link = document.querySelector('.article .link');
+// console.log(link.innerHTML);
