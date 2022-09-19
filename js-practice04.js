@@ -335,56 +335,59 @@ function correct(string) {
 }
 
 // console.log(correct('L0ND0N'));
-// // , 'LONDON');
 // console.log(correct('DUBL1N'));
-// // , 'DUBLIN');
 // console.log(correct('51NGAP0RE'));
-// // , 'SINGAPORE');
 // console.log(correct('BUDAPE5T'));
-// // , 'BUDAPEST');
 // console.log(correct('PAR15'));
-// // , 'PARIS');
 
-let total = 0;
-for (let index = 1; index < 11; index += 1) {
-  if (index % 3 === 0) {
-    total = total + index;
-  }
+// "ATTGC" --> "TAACG"
+// "GTAT" --> "CATA"
+
+var pairs = { A: 'T', T: 'A', C: 'G', G: 'C' };
+
+function DNAStrand(dna) {
+  return dna
+    .split('')
+    .map(function (v) {
+      return pairs[v];
+    })
+    .join('');
 }
-//
-// console.log(total);
-// elem.parentNode - вибере батьківський elem.
-// elem.childNodes - псевдомасив, зберігає всі дочірні елементи, включно з текстовими.
-// elem.children - псевдомасив, зберігає тільки дочірні вузли-елементи, тобто ті, що відповідають тегам.
-// elem.firstChild - вибере перший дочірній елемент всередині elem, включно з текстовими вузлами.
-// elem.firstElementChild - вибере перший дочірній вузол-елемент всередині elem.
-// elem.lastChild - вибере останній дочірній елемент всередині elem, включно з текстовими вузлами.
-// elem.lastElementChild - вибере останній дочірній вузол-елемент всередині elem.
-// elem.previousSibling - вибере елемент «зліва» від elem (його попереднього сусіда).
-// elem.previousElementSibling - вибере вузол-елемент «зліва» від elem (його попереднього сусіда).
-// elem.nextSibling - вибере елемент «праворуч» від elem (його наступного сусіда)
-// elem.nextElementSibling - вибере вузол-елемент «праворуч» від elem (його наступного сусіда).
-//===================================================
-// const message = document.querySelector('#message');
-// console.log(message.value); // Default textarea message
 
-// //===================================================
-// const activeLink = document.querySelector('.btn.active');
-// console.log(activeLink.href); // https://s.codepen.io/about
+function sum(numbers) {
+  let total = 0;
 
-// //===================================================
-// const image = document.querySelector('.image');
-// console.log(image.src); // https://placeimg.com/640/480/animals
-// image.src = 'https://placeimg.com/640/480/tech';
+  for (const number of numbers) {
+    total += number;
+  }
+  return total;
+}
 
-// const article = document.querySelector('.article');
-// console.log(article.innerHTML);
+// function sum(numbers) {
+//   return numbers.reduce((a, b) => a + b, 0);
+// }
 
-// const title = document.querySelector('.article .title');
-// console.log(title.innerHTML);
+// console.log(sum([]));
+// console.log(sum([1, 5.2, 4, 0, -1]));
 
-const text = document.querySelector('.article .text');
-console.log(text.innerHTML);
+// Count the number of divisors of a positive integer n.
+// Random tests go up to n = 500000.
 
-// const link = document.querySelector('.article .link');
-// console.log(link.innerHTML);
+function getDivisorsCnt(n) {
+  let count = 0;
+  for (let i = 1; i <= n; i += 1) {
+    if (n % i == 0) {
+      count += 1;
+    }
+  }
+  return count;
+}
+
+// getDivisorsCnt(1);
+// // 1
+// console.log(getDivisorsCnt(10));
+// 4
+// console.log(getDivisorsCnt(11));
+// // 2
+// console.log(getDivisorsCnt(54));
+// 8
