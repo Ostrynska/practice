@@ -119,4 +119,34 @@ function powersOfTwo(n) {
 }
 // console.log(powersOfTwo(4));
 const strCount = (str, letter) => str.split(letter).length - 1;
-console.log(strCount('Hello', 'l'));
+// console.log(strCount('Hello', 'l'));
+
+const sequenceSum = (begin, end, step) => {
+  let result = 0;
+
+  for (let i = begin; i <= end; i += step) {
+    result += i;
+  }
+  return result;
+};
+// console.log(sequenceSum(2, 6, 2));
+// console.log(sequenceSum(1, 5, 1));
+// console.log(sequenceSum(1, 5, 3));
+
+// Now you have to write a function that takes an argument and returns the square of it.
+
+function square(s) {
+  return Math.pow(s, 2);
+}
+
+// console.log(addSquare(3));
+// 9
+
+function roundToNext5(n) {
+  return Math.ceil(n / 5) * 5;
+}
+
+// console.log(roundToNext5(-1));
+// console.log(roundToNext5(0));
+// console.log(roundToNext5(2));
+// console.log(roundToNext5(12));
