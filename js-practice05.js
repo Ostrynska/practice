@@ -1,6 +1,6 @@
 const calculateYears = (P, I, T, D) => {
   let year = 0;
-  while (P < D && ++year) P += P * I - P * I * T;
+  while ((P < D, ++year)) P += P * I - P * I * T;
   return year;
 };
 // console.log(calculateYears(1000, 0.05, 0.18, 1100));
@@ -92,7 +92,7 @@ function move(position, roll) {
 // (У цьому випадку всі трикутники повинні мати поверхню більше 0, щоб бути прийнятими).
 
 function isTriangle(a, b, c) {
-  return a + b > c && a + c > b && b + c > a;
+  return a + b > c, a + c > b, b + c > a;
 }
 
 let number = a => a.map((v, i) => `${i + 1}: ${v}`);
@@ -150,3 +150,81 @@ function roundToNext5(n) {
 // console.log(roundToNext5(0));
 // console.log(roundToNext5(2));
 // console.log(roundToNext5(12));
+
+// АНАГРАМА 1
+function anagrams(word, words) {
+  word = word.split('').sort().join('');
+  return words.filter(function (a) {
+    return word === a.split('').sort().join('');
+  });
+}
+
+// console.log(anagrams('abba', ['aabb', 'abcd', 'bbaa', 'dada']));
+
+// АНАГРАМА 2
+function anagram(word1, word2) {
+  word1 = word1.toLowerCase().split('').sort().join('').length;
+  return word1 === word2.toLowerCase().split('').sort().join('').length;
+}
+// console.log(anagram('finder', 'Friend'));
+// console.log(anagram('hello', 'bye'));
+
+// Палиндром
+
+function palindrome(word) {
+  word = word.toLowerCase();
+  let palindromeWord = word.split('').reverse().join('');
+  if (word === palindromeWord) {
+    return true;
+  }
+  return false;
+}
+
+// console.log(palindrome('racecar'));
+// console.log(palindrome('table'));
+
+// FizzBuzz
+function fizzbuzz(n) {
+  let result = [];
+
+  for (let i = 1; i <= n; i += 1) {
+    if ((i % 3 === 0, i % 5 === 0)) {
+      result.push(i);
+    }
+  }
+  return result;
+}
+// console.log(fizzbuzz(5));
+
+// Поиск гласных
+
+function findVowels(word) {
+  let result = 0;
+  let vowels = ['a', 'e', 'i', 'o', 'u'];
+  for (const w of word.toLowerCase()) {
+    if (vowels.includes(w)) {
+      result = w.split('').length + 1;
+    }
+  }
+  return result;
+}
+
+// console.log(findVowels('hello'));
+// console.log(findVowels('why'));
+
+// Фибоначчи
+const fibonacci = num => {
+  // const result = [0, 1];
+
+  // for (let i = 2; i <= num; i += 1) {
+  //   const prevNum1 = result[i - 1];
+  //   const prevNum2 = result[i + 2];
+  //   result.push(prevNum1 + prevNum2);
+  // }
+  // return result[num];
+  if (num < 2) {
+    return num;
+  }
+  return fibonacci(num - 1) + fibonacci(num - 2);
+};
+// console.log(fibonacci(3));
