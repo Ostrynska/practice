@@ -237,3 +237,33 @@ const fibonacci = num => {
   return fibonacci(num - 1) + fibonacci(num - 2);
 };
 // console.log(fibonacci(3));
+
+function isUnique(str) {
+  return new Set(str).size === str.length;
+}
+
+// function isUnique(str) {
+//   let result = {};
+//   for (let i = 0; i < str.length; i++) {
+//     if (result[str[i]]) {
+//       return false;
+//     }
+//     result[str[i]] = true;
+//   }
+//   return true;
+// }
+
+// console.log(isUnique('abcdef')); // -> true
+// console.log(isUnique('1234567')); // -> true
+// console.log(isUnique('abcABC')); // -> true
+// console.log(isUnique('abcadef')); // -> false
+
+function flatten(array) {
+  const flattened = array
+    .flatMap(arr => arr)
+    .flatMap(arr => arr)
+    .flatMap(arr => arr);
+  return flattened;
+}
+
+// console.log(flatten([[1], [[2, 3]], [[[4]]]])); // -> [1, 2, 3, 4]
