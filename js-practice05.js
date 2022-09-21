@@ -172,13 +172,22 @@ function anagram(word1, word2) {
 // Палиндром
 
 function palindrome(word) {
+  // нижний регистр
   word = word.toLowerCase();
+  // строку в массив - развернуть масив - обьединяем в строку
   let palindromeWord = word.split('').reverse().join('');
+  // сравнить
   if (word === palindromeWord) {
     return true;
   }
   return false;
 }
+
+// ----АБО ---
+const palindromeTest = word => {
+  word = word.toLowerCase();
+  return word === word.split('').reverse().join('');
+};
 
 // console.log(palindrome('racecar'));
 // console.log(palindrome('table'));
