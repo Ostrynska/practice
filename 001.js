@@ -84,3 +84,9 @@ function twiceAsOld(dadYearsOld, sonYearsOld) {
 // }
 
 // console.log(twiceAsOld(42, 21));
+
+function removeChar(str) {
+  return str.slice(1, -1);
+}
+
+// console.log(removeChar('eloquent'));
