@@ -1,5 +1,9 @@
-const listEl = document.getElementsByTagName('li');
+const mango = {
+  username: "Mango",
+  showUsername() {
+    console.log(this);
+    console.log(`My username is: ${this.username}`);
+  },
+};
 
-console.log(listEl[0].innerText);
-console.log(listEl[0].innerHTML);
-console.log(listEl[0].textContent);
+const btn = document.querySelector(".js-btn");
