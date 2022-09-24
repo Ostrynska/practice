@@ -93,26 +93,47 @@ function removeChar(str) {
 
 function alphabetPosition(text) {
   var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
-  return text.toLowerCase().split('')
-  .filter( letter => {
-    let index = alphabet.indexOf(letter);
-    return index > -1;
-  }  )
-  .map( letter => alphabet.indexOf(letter) + 1 )
-  .join(' ')
+  return text
+    .toLowerCase()
+    .split('')
+    .filter(letter => {
+      let index = alphabet.indexOf(letter);
+      return index > -1;
+    })
+    .map(letter => alphabet.indexOf(letter) + 1)
+    .join(' ');
 }
 
-/ const makeChangeColor = function(){
-//   const changeColor = function(color){
-//     this.color = color;
-//     console.log('changeColor -> this', this)
-//   }
-//    const sweater = {
-//     color:'teal',
-//    }
-//    sweater.updateColor = changeColor;
+const makeChangeColor = function () {
+  const changeColor = function (color) {
+    this.color = color;
+    console.log('changeColor -> this', this);
+  };
+  const sweater = {
+    color: 'teal',
+  };
+  sweater.updateColor = changeColor;
 
-//    return sweater.updateColor.bind(sweater);
+  return sweater.updateColor.bind(sweater);
+};
+const sweatColor = makeChangeColor();
+sweatColor('blue');
+
+// let user ={
+//   firstName: 'Poly',
+// sayHi() {
+//   let arrow = () => console.log(this.firstName);
+//   arrow();
 // }
-// const sweatColor = makeChangeColor();
-// sweatColor('blue');
+// }
+// user.sayHi();
+
+const setRGB = () => {
+  //const randomColor = Math.round(Math.random(0, 1) * 255);
+
+  const red = Math.round(Math.random(0, 1) * 255);
+  const green = Math.round(Math.random(0, 1) * 255);
+  const blue = Math.round(Math.random(0, 1) * 255);
+
+  return `rgb(${red},${green},${blue})`;
+};
