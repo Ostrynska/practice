@@ -137,3 +137,7 @@ const setRGB = () => {
 
   return `rgb(${red},${green},${blue})`;
 };
+
+
+const greet = name => `Hello, ${name} how are you doing today?`;
+
