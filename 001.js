@@ -139,5 +139,10 @@ const setRGB = () => {
 };
 
 
-const greet = name => `Hello, ${name} how are you doing today?`;
 
+let str = "123";
+alert(typeof str); // string
+
+let num = Number(str); // стає числом 123
+
+alert(typeof num); // number
