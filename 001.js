@@ -107,7 +107,7 @@ function alphabetPosition(text) {
 const makeChangeColor = function () {
   const changeColor = function (color) {
     this.color = color;
-    console.log('changeColor -> this', this);
+    // console.log('changeColor -> this', this);
   };
   const sweater = {
     color: 'teal',
@@ -138,11 +138,22 @@ const setRGB = () => {
   return `rgb(${red},${green},${blue})`;
 };
 
-
-
-let str = "123";
-alert(typeof str); // string
+let str = '123';
+// alert(typeof str); // string
 
 let num = Number(str); // стає числом 123
 
-alert(typeof num); // number
+// alert(typeof num); // number
+
+function find_average(array) {
+  if (array.length == 0) return 0;
+  let result = 0;
+  for (num of array) {
+    result += num;
+  }
+  return result / array.length;
+}
+
+// console.log(findAverage([1, 2, 3]));
+// console.log(findAverage([1, 2, 3, 4]));
+// console.log(findAverage([89, 74, 2, 90, 6, 51, 78, 17, 64, 56, 90, 10, 75]));
