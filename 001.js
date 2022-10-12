@@ -157,3 +157,14 @@ function find_average(array) {
 // console.log(findAverage([1, 2, 3]));
 // console.log(findAverage([1, 2, 3, 4]));
 // console.log(findAverage([89, 74, 2, 90, 6, 51, 78, 17, 64, 56, 90, 10, 75]));
+
+function solution(a, b) {
+  // console.log(a.split('').slice(1, 3).join(''));
+  if (a.split('').slice(-2).join('') === b) {
+    return true;
+  }
+  return false;
+}
+
+console.log(solution('abc', 'bc'));
+console.log(solution('abc', 'd'));
