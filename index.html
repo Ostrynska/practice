@@ -7,17 +7,17 @@
     <title>Document</title>
   </head>
   <body>
-    <form action="submit">
-      <input type="text" name="city" />
-      <select name="days">
-        <option value="3">3</option>
-        <option value="5">5</option>
-        <option value="7">7</option>
-      </select>
-      <button type="submit">Пошук</button>
-    </form>
-    <h1 class="city"></h1>
-    <ul class="list"></ul>
+    <div class="container">
+      <div class="search-wrapper">
+        <input
+          type="text"
+          id="search-box"
+          placeholder="Enter a country name here..."
+        />
+      </div>
+      <ul class="country-list"></ul>
+      <div class="country-info"></div>
+    </div>
     <!-- <script src="./js-practice01.js" type="module"></script> -->
     <!-- <script src="./js-practice02.js" type="module"></script> -->
     <!-- <script src="./js-practice03.js" type="module"></script> -->
@@ -25,6 +25,34 @@
     <!-- <script src="./js-practice05.js" type="module"></script> -->
     <!-- <script src="./cars-practice.js" type="module"></script> -->
     <!-- <script src="./001.js" type="module"></script> -->
-    <script src="./js-practice.js" type="module"></script>
+    <!-- <script src="./js-practice.js" type="module"></script> -->
+    <script src="./jshw.js" type="module"></script>
+
+    {{#each this}}
+    <li class="list-card__item film-card">
+      {{#if poster_path}}
+      <img
+        src="https://image.tmdb.org/t/p/w400{{poster_path}}"
+        alt="{{original_title}}"
+        loading="lazy"
+        data-id="{{id}}"
+      />
+      {{else}}
+      <img
+        src="https://sd.keepcalms.com/i/keep-calm-poster-not-found.png"
+        alt="poster not found"
+        class="lazyload"
+      />
+      {{/if}}
+      <h2 data-id="{{id}}">{{original_title}}</h2>
+      <ul>
+        Genre {{#each genres}}
+        <li>{{this.name}}</li>
+        {{/each}}
+      </ul>
+      <p>{{year}}</p>
+      <p>{{vote_average}}</p>
+    </li>
+    {{/each}}
   </body>
 </html>

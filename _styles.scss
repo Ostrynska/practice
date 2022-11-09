@@ -1,0 +1,147 @@
+.film-card {
+    width: 280px;
+    height: 443px;
+    transition: transform 0.15s ease-in-out;
+
+    &:hover,
+    &:focus {
+        transform: scale(102%);
+    }
+
+    @media screen and (min-width: 768px) {
+        width: 336px;
+        height: 494px;
+    }
+
+    @media screen and (min-width: 1080px) {
+        width: 395px;
+        height: 634px;
+    }
+}
+
+
+.film-card img {
+    display: block;
+    width: 100%;
+    height: 402px;
+    margin-bottom: 10px;
+    border-radius: $main-border-radius;
+
+    @media screen and (min-width: 768px) {
+        height: 455px;
+        margin-bottom: 8px;
+    }
+
+    @media screen and (min-width: 1080px) {
+        height: 574px;
+        margin-bottom: 12px;
+    }
+}
+
+
+.film-card>h2 {
+    font-family: 'Roboto';
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 20px;
+    line-height: calc(24 / 20);
+    color: $white-text;
+}
+
+.film-card__description {
+    display: inline-block;
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 20px;
+    line-height: calc(24 / 20);
+    color: $orange-text;
+}
+
+.film-card__description>ul {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.film-card__description li:not(:last-child):after {
+    content: ",";
+    display: inline-block;
+}
+
+.film-card__description li:last-child:after {
+    content: "|";
+}
+
+.film-card__description li:not(:last-child) {
+    margin-right: 3px;
+}
+
+.film-card__year {
+    // width: 33px;
+    // white-space: nowrap;
+    // overflow: hidden;
+    // text-overflow: unset;
+}
+
+.film-card__rating {
+    margin-left: 10px;
+    padding-top: 1px;
+    height: 16px;
+    width: 36px;
+
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 12px;
+    line-height: calc(14 / 12);
+    color: $white-text;
+    background-color: $orange-btn;
+    border: none;
+    text-align: center;
+    border-radius: $main-border-radius;
+}
+
+
+{{#each this}}
+<li class="list-card__item film-card">
+    {{#if poster_path}}
+    <img src='https://image.tmdb.org/t/p/w400{{poster_path}}' alt='{{original_title}}' loading="lazy" data-id="{{id}}"/>
+    {{else}}
+    <img src='https://sd.keepcalms.com/i/keep-calm-poster-not-found.png'alt='poster not found' class='lazyload'/>
+    {{/if}}
+    <h2 data-id="{{id}}">{{original_title}}</h2>
+    <ul>Genre
+        {{#each genres}}
+        <li>
+            {{this.name}}
+        </li>
+        {{/each}}
+    </ul>
+    <p>{{year}}</p>
+    <p>{{vote_average}}</p>
+</li>
+{{/each}}
+
+
+.films-section {
+    padding-top: 20px;
+    padding-bottom: 40px;
+
+    @media screen and (min-width: 768px) {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+}
+
+.film-list {
+    margin-bottom: 40px;
+
+    @media screen and (min-width: 768px) {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 60px;
+        gap: 32px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        gap: 15px;
+    }
+}

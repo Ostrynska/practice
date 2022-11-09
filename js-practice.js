@@ -1,48 +1,67 @@
-const base_url = 'http://api.weatherapi.com/v1';
-const KEY = '4202b3fa59ea4adf832162138221110';
-const container = document.querySelector('.list');
-const form = document.querySelector('form');
-const cityName = document.querySelector('.city');
+// const base_url = 'http://api.weatherapi.com/v1';
+// const KEY = '4202b3fa59ea4adf832162138221110';
+// const container = document.querySelector('.list');
+// const form = document.querySelector('form');
+// const cityName = document.querySelector('.city');
 
-form.addEventListener('submit', searchWeather);
+// form.addEventListener('submit', searchWeather);
 
-function searchWeather(e) {
-  e.preventDefault();
-  const { city, days } = e.currentTarget.elements;
+// function searchWeather(e) {
+//   e.preventDefault();
+//   const { city, days } = e.currentTarget.elements;
 
-  const params = new URLSearchParams({
-    key: KEY,
-    q: city.value,
-    days: days.value,
+//   const params = new URLSearchParams({
+//     key: KEY,
+//     q: city.value,
+//     days: days.value,
+//   });
+//   const resp = fetch(`${base_url}/forecast.json?${params}`);
+//   //   const resp = fetch(
+//   //     `${base_url}/forecast.json?key=${KEY}&q=${city.value}&days=${days.value}`
+//   //   );
+//   resp
+//     .then(response => {
+//       if (!response.ok) {
+//         throw new Error();
+//       }
+//       return response.json();
+//     })
+//     .then(data => {
+//       const markup = createMarkup(data.forecast.forecastday);
+//       console.log(data.forecast.forecastday);
+//       cityName.textContent = data.location.name;
+//       container.innerHTML = markup;
+//     })
+//     .catch(err => console.log(err));
+// }
+
+// function createMarkup(arr) {
+//   return arr
+//     .map(
+//       item => `<li>
+//         <h2>Дата: ${item.date}</h2>
+//         <img src="${item.day.condition.icon}" alt="${item.day.condition.text}" />
+//         <p>${item.day.condition.text}</p>
+//         <h3>Середня температура: ${item.day.avgtemp_c}</h3>
+//       </li>`
+//     )
+//     .join('');
+// }
+
+//api.themoviedb.org/3/trending/movie/day?api_key=d20de05767e33e4f2fb018551512ab87
+
+function fetchImages() {
+  return fetch({
+    method: 'get',
+    url: `https://api.themoviedb.org/3/trending/movie/day`,
+    params: {
+      api_key: `d20de05767e33e4f2fb018551512ab87`,
+    },
   });
-  const resp = fetch(`${base_url}/forecast.json?${params}`);
-  //   const resp = fetch(
-  //     `${base_url}/forecast.json?key=${KEY}&q=${city.value}&days=${days.value}`
-  //   );
-  resp
-    .then(response => {
-      if (!response.ok) {
-        throw new Error();
-      }
-      return response.json();
-    })
-    .then(data => {
-      const markup = createMarkup(data.forecast.forecastday);
-      cityName.textContent = data.location.name;
-      container.innerHTML = markup;
-    })
-    .catch(err => console.log(err));
 }
 
-function createMarkup(arr) {
-  return arr
-    .map(
-      item => `<li>
-        <h2>Дата: ${item.date}</h2>
-        <img src="${item.day.condition.icon}" alt="${item.day.condition.text}" />
-        <p>${item.day.condition.text}</p>
-        <h3>Середня температура: ${item.day.avgtemp_c}</h3>
-      </li>`
-    )
-    .join('');
-}
+fetchImages()
+  .then(({ data }) => console.log(data))
+  .catch(error => console.log(error));
+
+console.log(fetchImages());
